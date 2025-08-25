@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-
+from helper.utils import highlight_element as highlight
 
 class Login_page_object:
     def __init__(self, driver):
@@ -12,9 +12,11 @@ class Login_page_object:
     def fill_login_form(self, field, value):
         if field.lower() == "username":
             username_field = self.driver.find_element(By.XPATH, self.__login_field_locator.format("Username"))
+            highlight(self.driver, username_field)
             username_field.send_keys(value)
         elif field.lower() == "password":
             password_field = self.driver.find_element(By.XPATH, self.__login_field_locator.format("Password"))
+            highlight(self.driver, password_field)
             password_field.send_keys(value)
         else:
             raise ValueError(f"There was a problem filling the field {field}")

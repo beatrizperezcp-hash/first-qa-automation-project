@@ -11,7 +11,7 @@ def open_web(context, url):
 
 @when("Fill the following fields")
 def fill_login_fields(context):
-  time.sleep(5)
+  time.sleep(2)
   login_po = login(context.driver)
   for i in context.table:
    login_po.fill_login_form(i["field"], i["value"])
